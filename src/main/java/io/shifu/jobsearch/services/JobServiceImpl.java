@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JobServiceImpl implements JobService {
@@ -17,8 +18,21 @@ public class JobServiceImpl implements JobService {
         this.jobRepository = jobRepository;
     }
 
+    // поиск всех
     @Override
     public List<Job> findAll() {
         return jobRepository.findAll();
+    }
+
+    // поиск по id
+    @Override
+    public Optional<Job> findById(Long id) {
+        return jobRepository.findById(id);
+    }
+
+    // поиск по зп равно или больше
+    @Override
+    public List<Job> findBySearchQuery(Integer salary, String location) {
+        return jobRepository.findBySearchQuery(salary, location);
     }
 }
