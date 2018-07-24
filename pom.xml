@@ -19,6 +19,7 @@
 		<hibernate.version>5.3.1.Final</hibernate.version>
 		<hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
 		<jservlet.version>4.0.1</jservlet.version>
+		<jackson.library>2.9.6</jackson.library>
 	</properties>
 
 	<dependencies>
@@ -72,6 +73,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${jservlet.version}</version>
+		</dependency>
+		<!--JSON - POJO converter-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.library}</version>
 		</dependency>
         <!--jaxb-->
         <dependency>
