@@ -19,9 +19,9 @@ public class JobController {
     }
 
     // общий список вакансий
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    Collection<Job> readAllJob() {
-        return jobService.findAll();
+    @RequestMapping(value = {"/", "/page/{pageId}"}, method = RequestMethod.GET)
+    Collection<Job> readAllJob(@PathVariable("pageId") Optional<Integer> pageId) {
+        return jobService.findAll(pageId.orElse(1)).getContent();
     }
 
     // запрос конкретной вакансии
@@ -36,10 +36,12 @@ public class JobController {
     }
 
     // поиск
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    Collection<Job> searchJob(
+    @RequestMapping(value = {"/search", "/search/page/{pageId}"}, method = RequestMethod.GET)
+    Collection<Job> searchJob(@PathVariable("pageId") Optional<Integer> pageId,
             @RequestParam(value = "salary", required = false) Integer salary,
-            @RequestParam(value = "location", required = false) String location) {
-        return jobService.findBySearchQuery(salary, location);
+            @RequestParam(value = "location", required = false) String location,
+            @RequestParam(value = "title", required = false) String title,
+            @RequestParam(value = "description", required = false) String description) {
+        return jobService.findBySearchQuery(salary, location, title, description, pageId.orElse(1)).getContent();
     }
 }
