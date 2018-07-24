@@ -23,7 +23,7 @@ public class Job {
     private String siteId;
 
     @Column(name = "date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date date;
 
     @Column(name = "title")
@@ -48,18 +48,6 @@ public class Job {
     private String url;
 
     public Job() {
-    }
-
-    public Job(String site, String siteId, Date date, String title, String location, Integer salary, String currency, String description, String url) {
-        this.site = site;
-        this.siteId = siteId;
-        this.date = date;
-        this.title = title;
-        this.location = location;
-        this.salary = salary;
-        this.currency = currency;
-        this.description = description;
-        this.url = url;
     }
 
     public Long getId() {
