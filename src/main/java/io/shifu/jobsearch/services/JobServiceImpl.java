@@ -7,7 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,5 +40,16 @@ public class JobServiceImpl implements JobService {
     @Override
     public Page<Job> findBySearchQuery(Integer salary, String location, String title, String description, Integer pageNumber) {
         return jobRepository.findBySearchQuery(salary, location, title, description, PageRequest.of(pageNumber-1, PAGE_SIZE, Sort.Direction.DESC, "date"));
+    }
+
+    @Transactional
+    @Override
+    public void saveList(List<Job> jobs) {
+        jobRepository.saveAll(jobs);
+    }
+
+    @Override
+    public Optional<Job> findBySiteid(String site, String siteId) {
+        return jobRepository.findBySiteAndSiteId(site, siteId);
     }
 }
