@@ -61,7 +61,7 @@ public class Usajobs {
                         if (job.getSalary() < 500) {
                             job.setCurrency("usd/hour");
                         } else {
-                            job.setCurrency("ush/year");
+                            job.setCurrency("usd/year");
                         }
                     }
                     if ("start_date".equals(fieldName)) {
