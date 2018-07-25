@@ -12,12 +12,12 @@ back-end - Spring MVC (restful api)\
 автоматическое обновление базы по расписанию
 
 разработка:\
-https://github.com/Hanomi\
-https://github.com/iagranovich\
-https://github.com/ribil\
+https://github.com/Hanomi
+https://github.com/iagranovich
+https://github.com/ribil
 фронт:\
-https://github.com/jobs-project/frontend\
-https://github.com/montecamo\
+https://github.com/jobs-project/frontend
+https://github.com/montecamo
 моб.клиент:\
-https://github.com/jobs-project/iosJobsProject\
+https://github.com/jobs-project/iosJobsProject
 https://github.com/Posikyra
