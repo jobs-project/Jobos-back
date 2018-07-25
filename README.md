@@ -1,6 +1,8 @@
 # jobsearch-backend
 Job search portal (back-end)
 
+приложение написанно в целях обучения и совместной разработки\
+
 приложение по поиску вакансий\
 back-end - Spring MVC (restful api)\
 база - Spring data+Hibernate+MySql\
@@ -12,12 +14,12 @@ back-end - Spring MVC (restful api)\
 автоматическое обновление базы по расписанию
 
 разработка:\
-https://github.com/Hanomi
-https://github.com/iagranovich
-https://github.com/ribil
+https://github.com/Hanomi \
+https://github.com/iagranovich \
+https://github.com/ribil \
 фронт:\
-https://github.com/jobs-project/frontend
-https://github.com/montecamo
+https://github.com/jobs-project/frontend \
+https://github.com/montecamo \
 моб.клиент:\
-https://github.com/jobs-project/iosJobsProject
+https://github.com/jobs-project/iosJobsProject \
 https://github.com/Posikyra
