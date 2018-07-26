@@ -1,21 +1,17 @@
 package io.shifu.jobsearch.model;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table(name = "job")
-public class GithubJob extends AbstractJob {
+public class Usajob extends AbstractJob {
     @Override
     @JsonIgnore
     public void setId(Long id) {
@@ -32,32 +28,36 @@ public class GithubJob extends AbstractJob {
     @JsonProperty("id")
     public void setSiteId(String siteId) {
         super.setSiteId(siteId);
-        super.setSite("github");
+        super.setSite("usajobs");
     }
 
     @Override
-    @JsonProperty("created_at")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "EEE MMM d HH:mm:ss z yyyy")
+    @JsonProperty("start_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public void setDate(Date date) {
         super.setDate(date);
     }
 
     @Override
-    @JsonProperty("title")
+    @JsonProperty("position_title")
     public void setTitle(String title) {
         super.setTitle(title);
     }
 
-    @Override
-    @JsonProperty("location")
-    public void setLocation(String location) {
-        super.setLocation(location);
+    @JsonProperty("locations")
+    public void setLocation(List<String> location) {
+        super.setLocation(location.get(0));
     }
 
     @Override
-    @JsonIgnore
+    @JsonProperty("minimum")
     public void setSalary(Integer salary) {
         super.setSalary(salary);
+        if (salary < 500) {
+            super.setCurrency("usd/hour");
+        } else {
+            super.setCurrency("usd/year");
+        }
     }
 
     @Override
@@ -67,13 +67,13 @@ public class GithubJob extends AbstractJob {
     }
 
     @Override
-    @JsonProperty("company")
+    @JsonProperty("organization_name")
     public void setCompany(String company) {
         super.setCompany(company);
     }
 
     @Override
-    @JsonProperty("description")
+    @JsonIgnore
     public void setDescription(String description) {
         super.setDescription(description);
     }
@@ -82,6 +82,6 @@ public class GithubJob extends AbstractJob {
     @JsonProperty("url")
     public void setUrl(String url) {
         super.setUrl(url);
+        super.setDescription("Описание доступно по ссылке: " + url);
     }
-
 }

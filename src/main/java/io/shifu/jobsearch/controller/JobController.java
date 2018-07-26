@@ -2,7 +2,6 @@ package io.shifu.jobsearch.controller;
 
 import io.shifu.jobsearch.exception.VacancyNotFoundException;
 import io.shifu.jobsearch.model.Job;
-import io.shifu.jobsearch.services.GithubJobService;
 import io.shifu.jobsearch.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +10,12 @@ import java.util.*;
 
 @RestController
 public class JobController {
-	
-	private final GithubJobService githubJobService;
+
     private final JobService jobService;
 
     @Autowired
-    public JobController(JobService jobService, GithubJobService githubJobService) {
+    public JobController(JobService jobService) {
         this.jobService = jobService;
-        this.githubJobService = githubJobService;        
     }
 
     // общий список вакансий
@@ -46,11 +43,5 @@ public class JobController {
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "description", required = false) String description) {
         return jobService.findBySearchQuery(salary, location, title, description, pageId.orElse(1)).getContent();
-    }
-    
-    //загрузка вакансий с GitHub в базу
-    @RequestMapping(value = "/download/github", method = RequestMethod.GET)
-    void downloadGithubJobs() {
-    	githubJobService.saveAll();
     }
 }
