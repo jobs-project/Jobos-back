@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class JobServiceImpl implements JobService {
 
-    private final static int PAGE_SIZE = 5;
+    private final static int PAGE_SIZE = 10;
 
     private final JobRepository jobRepository;
 
