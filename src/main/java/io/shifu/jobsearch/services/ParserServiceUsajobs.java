@@ -33,16 +33,12 @@ public class ParserServiceUsajobs extends ParserService {
 
     @Transactional
     public void saveList(List<Usajob> jobs) {
-        List<Usajob> saveList = new ArrayList<>();
         jobs.forEach(f -> {
-            // проверяем существует ли уже вакансия, если да то не сохраняем
+            // проверяем существует ли уже вакансия, если да то обновляем старую
             Optional<Job> bySiteid = findBySiteid(f.getSite(), f.getSiteId());
-            if (bySiteid.isPresent()) { 
-				f.setId(bySiteid.get().getId());
-			} 
-		    saveList.add(f);	
+            bySiteid.ifPresent(job -> f.setId(job.getId()));
         });
-        if (!saveList.isEmpty()) usaJobRepository.saveAll(saveList);
+        usaJobRepository.saveAll(jobs);
     }
 
     @Override
