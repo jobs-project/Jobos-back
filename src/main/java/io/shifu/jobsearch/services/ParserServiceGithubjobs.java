@@ -37,7 +37,10 @@ public class ParserServiceGithubjobs extends ParserService {
 		jobs.forEach(f -> {
 			// проверяем существует ли уже вакансия, если да то не сохраняем
 			Optional<Job> bySiteid = findBySiteid(f.getSite(), f.getSiteId());
-			if (!bySiteid.isPresent()) saveList.add(f);
+			if (bySiteid.isPresent()) { 
+				f.setId(bySiteid.get().getId());
+			} 
+		    saveList.add(f);			
 		});
 		if (!saveList.isEmpty()) githubJobRepository.saveAll(saveList);
 	}
