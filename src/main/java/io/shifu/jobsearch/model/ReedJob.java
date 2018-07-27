@@ -30,7 +30,7 @@ public class ReedJob extends AbstractJob {
     @JsonProperty("id")
     public void setSiteId(String siteId) {
         super.setSiteId(siteId);
-        super.setSite("github");
+        super.setSite("reed.co.uk");
     }
 
     @Override
