@@ -31,17 +31,14 @@ public class ParserServiceReedJobs {
 
     private static final Logger log = LoggerFactory.getLogger(ParserServiceReedJobs.class);
 
+    private static final String username = "72689e9c-1e0a-48b1-b06f-9548961db2ee";
 
     @Transactional
     public void parse() {
 
-        String username = "72689e9c-1e0a-48b1-b06f-9548961db2ee";
-
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
-
-
 
         for (int i = 0; i < 50000; i += 100) {
 
@@ -62,14 +59,12 @@ public class ParserServiceReedJobs {
                 reedJobRepository.save(job);
 
             }
-
         }
     }
 
     @Transactional
     @Scheduled(cron = "0 10 3 * * ?")
     public void parseWithUpdate() {
-        String username = "72689e9c-1e0a-48b1-b06f-9548961db2ee";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
@@ -100,9 +95,6 @@ public class ParserServiceReedJobs {
                     reedJobRepository.save(job);
                     log.info(job.toString());
                 }
-
-
-
             }
         }
 

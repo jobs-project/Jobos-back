@@ -9,17 +9,18 @@ back-end - Spring MVC (restful api)\
 парсинг апи - FasterXML Jackson
 
 реализованный функционал:\
-парсинг базы/нескольких баз вакансий по апи (на данный момент search.gov)\
+парсинг базы/нескольких баз вакансий по апи  
+
 рест интерфейс (поиск - место/название/описание/зарплата)\
 автоматическое обновление базы по расписанию
 
-разработка:\
+Backend:\
 https://github.com/Hanomi \
 https://github.com/iagranovich \
 https://github.com/ribil \
-фронт:\
+Frontend:\
 https://github.com/jobs-project/frontend \
 https://github.com/montecamo \
-моб.клиент:\
+Mobile:\
 https://github.com/jobs-project/iosJobsProject \
 https://github.com/Posikyra
